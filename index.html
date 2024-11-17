@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Fonts: Montserrat -->
+  <title>Document</title>
+  <meta name="viewport" content="width=1200, initial-scale=1.0"> <!-- Força a largura para 1200px -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  
+
   <style>
     /* Reset básico */
     * {
@@ -15,162 +14,134 @@
       box-sizing: border-box;
     }
 
-    /* Corpo do site */
     body {
       font-family: 'Montserrat', sans-serif;
-      color: #000;
+      color: #1D1F21;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
       min-height: 100vh;
-      padding: 0;
+      padding: 10px 20px;
       position: relative;
       overflow: hidden;
-      height: 100%;
-      flex-direction: column;
+      width: 1200px; /* Fixe a largura para o tamanho de um desktop */
+      margin: 0 auto; /* Centraliza o conteúdo */
     }
 
-    /* Fundo da imagem com animação */
-    .background-image {
+    /* Fundo com imagem JPEG */
+    .background {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('IMG_0637.jpg') no-repeat center center fixed;
+      background: url('img_0637.webp') no-repeat left center fixed;
       background-size: cover;
-      z-index: 0;
-      animation: moveBackground 20s linear infinite;
+      z-index: -2;
+      filter: grayscale(100%);
     }
 
-    /* Animação do fundo */
-    @keyframes moveBackground {
-      0% {
-        background-position: 0 0;
-      }
-      50% {
-        background-position: 100% 0;
-      }
-      100% {
-        background-position: 0 0;
-      }
-    }
-
-    /* Texto Passionate ajustado sem animação de rotação */
-    .passionate-text {
-      font-size: 3rem;
-      color: #333;
-      font-weight: 400;
-      letter-spacing: 3px;
-      font-style: italic;
-      margin-top: 10px;
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 700px;
+      padding: 40px;
       text-align: left;
-      position: absolute;
-      top: 10%;
-      left: 5%;
-      z-index: 0;
-      opacity: 0;
-      animation: fadeIn 2s ease-out forwards, pulse 1.5s infinite;
+      background: transparent;
     }
 
-    /* Animação de fade-in para o texto Passionate */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    /* Animação de pulsação para o texto Passionate */
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-
-    /* Efeito Glitch no botão About */
-    .about-button {
-      font-size: 2rem;
-      color: #fff;
-      background-color: #333;
-      padding: 15px 30px;
-      border: none;
-      cursor: pointer;
-      position: absolute;
-      top: 20%;
-      left: 5%;
-      z-index: 1;
-      animation: glitch 1s infinite linear;
-    }
-
-    @keyframes glitch {
-      0% { text-shadow: 2px 0 5px rgba(255, 0, 0, 0.8), -2px 0 5px rgba(0, 0, 255, 0.8); }
-      50% { text-shadow: -2px 0 5px rgba(255, 0, 0, 0.8), 2px 0 5px rgba(0, 0, 255, 0.8); }
-      100% { text-shadow: 2px 0 5px rgba(255, 0, 0, 0.8), -2px 0 5px rgba(0, 0, 255, 0.8); }
-    }
-
-    /* Texto Lattes na horizontal com animação */
-    .lattes-text {
-      font-size: 1rem;
-      position: absolute;
-      top: 5%;
-      left: 5%;
-      z-index: 2;
-      animation: pulse 1.5s infinite, changeColor 5s infinite;
-      cursor: pointer;
-      text-decoration: none;
+    h2 {
+      font-size: 1.5rem;
       color: #000;
+      margin-bottom: 20px;
+      text-align: left;
+      margin-left: 0;
     }
 
-    /* Animação de pulsação para o texto Lattes */
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    .web-text-wrapper {
+      position: relative;
     }
 
-    /* Animação de mudança de cor para o texto Lattes */
-    @keyframes changeColor {
-      0% { color: rgb(48, 105, 152); }
-      25% { color: rgb(245, 152, 29); }
-      50% { color: rgb(246, 223, 30); }
-      75% { color: rgb(227, 79, 38); }
-      100% { color: rgb(21, 114, 182); }
+    .thinking-bubble {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #000;
+      border-radius: 20px;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      max-width: 150px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      line-height: 1.5;
+      backdrop-filter: blur(10px);
     }
 
-    /* Estilo dos ícones das linguagens e matemática */
-    .programming-icon {
-      font-size: 3rem;
+    .thinking-bubble:after {
+      content: '';
       position: absolute;
-      z-index: 2;
-      animation: moveIcon 5s infinite, changeColor 5s infinite;
+      top: 50%;
+      right: 100%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 15px solid rgba(0, 0, 0, 0.7);
     }
 
-    /* Animação de movimento dos ícones */
-    @keyframes moveIcon {
-      0% { transform: translateY(0) translateX(0); }
-      25% { transform: translateY(-10px) translateX(10px); }
-      50% { transform: translateY(10px) translateX(20px); }
-      75% { transform: translateY(-5px) translateX(30px); }
-      100% { transform: translateY(0) translateX(0); }
-    }
-
-    /* Posições dos ícones */
-    .icon-1 { top: 20%; left: 10%; }
-    .icon-2 { top: 40%; left: 20%; }
-    .icon-3 { top: 60%; left: 35%; }
-    .icon-4 { top: 10%; left: 75%; }
-    .icon-5 { top: 80%; left: 15%; }
-    .icon-6 { top: 70%; left: 80%; }
-    .icon-7 { top: 50%; left: 65%; }
-    .icon-8 { top: 85%; left: 40%; }
-
-    /* Botões */
-    .button {
+    .learn-more {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
+      font-size: 0.75rem;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.7);
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background-color 0.3s, transform 0.3s ease;
+      position: fixed;
+      right: 20px;
+      bottom: 50%;
+      animation: pulse 2s infinite;
+      backdrop-filter: blur(10px);
+    }
+
+    .learn-more:hover {
+      background-color: rgba(100, 255, 218, 0.7);
+      transform: scale(1.1) translateY(-50%) rotate(-90deg);
+    }
+
+    .about-section {
+      margin-top: 60px;
+      display: none;
+      background: rgba(200, 200, 200, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .about-section h3 {
+      font-size: 0.875rem;
+      color: #1D1F21;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+      color: #1D1F21;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .back-button {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
       color: #fff;
       background-color: #000;
       border: none;
@@ -179,59 +150,87 @@
       cursor: pointer;
       display: inline-block;
       text-transform: uppercase;
+      margin-top: 40px;
       transition: background-color 0.3s;
       text-align: center;
+      margin: 0 auto;
+      display: block;
     }
 
-    .button:hover {
+    .back-button:hover {
       background-color: #64ffda;
     }
 
-    /* Botão Learn More */
-    .learn-more {
-      font-size: 1rem;
-      margin-top: 50px;
-      position: fixed; /* Fixar no rodapé */
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* Botão voltar */
-    .back-button {
-      font-size: 1rem;
-      margin-top: 40px; /* Aumentar a margem superior */
-      display: block; /* Centraliza o botão */
+    .links {
+      display: flex;
+      justify-content: space-between;
       margin-left: auto;
-      margin-right: auto;
     }
 
+    .links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #000;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .links a:hover {
+      color: #64ffda;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1) translateY(-50%) rotate(-90deg);
+      }
+      50% {
+        transform: scale(1.1) translateY(-50%) rotate(-90deg);
+      }
+      100% {
+        transform: scale(1) translateY(-50%) rotate(-90deg);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Fundo da imagem -->
-  <div class="background-image"></div>
+  <div class="background" id="background"></div>
 
-  <!-- Texto Passionate com animação -->
-  <div class="passionate-text">
-    Passionate about tech and photography
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2>Applied <br> Mathematics</h2>
+    </div>
+
+    <div class="web-text-wrapper">
+      <div class="thinking-bubble">
+        <a href="https://www.instagram.com" target="_blank" style="color: #fff;">Instagram</a><br>
+        <a href="http://lattes.cnpq.br" target="_blank" style="color: #fff;">Lattes</a>
+      </div>
+      <button class="learn-more" id="learnMoreBtn">Learn More</button>
+    </div>
+
+    <div class="about-section" id="aboutSection">
+      <h3>ABOUT</h3>
+      <p>I'm a freshman in Applied Computational Mathematics at UFF. I'm passionate about photography and always seeking new perspectives through the lens.</p>
+      <p>Currently, I'm diving deep into the world of computational mathematics, where I blend creativity and logic to solve complex problems.</p>
+
+      <button class="back-button" id="backButton">Back</button>
+    </div>
   </div>
 
-  <!-- Botão About com animação -->
-  <button class="about-button">About</button>
+  <script>
+    const learnMoreBtn = document.getElementById('learnMoreBtn');
+    const aboutSection = document.getElementById('aboutSection');
+    const backButton = document.getElementById('backButton');
 
-  <!-- Texto Lattes na horizontal com animação -->
-  <a href="https://lattes.CNPq.br/0213877096339374" target="_blank" title="Lattes" class="lattes-text">
-    Lattes
-  </a>
+    learnMoreBtn.addEventListener('click', function() {
+      aboutSection.style.display = 'block';
+      learnMoreBtn.style.display = 'none'; 
+    });
 
-  <!-- Ícones das Linguagens e Matemática -->
-  <div class="programming-icon python-icon icon-1"><i class="fab fa-python"></i></div> <!-- Python -->
-  <div class="programming-icon java-icon icon-2"><i class="fab fa-java"></i></div> <!-- Java -->
-  <div class="programming-icon js-icon icon-3"><i class="fab fa-js-square"></i></div> <!-- JavaScript -->
-  <div class="programming-icon html-icon icon-4"><i class="fab fa-html5"></i></div> <!-- HTML -->
-  <div class="programming-icon css-icon icon-5"><i class="fab fa-css3-alt"></i></div> <!-- CSS -->
-  <div class="programming-icon cpp-icon icon-6"><i class="fab fa-cuttlefish"></i></div> <!-- C++ -->
-  <div class="programming-icon sql-icon icon-7"><i class="fab fa-sql"></i></div> <!-- SQL -->
-  <div class="programming-icon ruby-icon[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/KleKlai/project-exodus-v1/tree/8d2a713b9c197b8f15c80765ebb3070db00091e0/.history%2Fresources%2Fviews%2Fmuseum%2Fbakaw%2Findex.blade_20201104213631.php?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")
+    backButton.addEventListener('click', function() {
+      aboutSection.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

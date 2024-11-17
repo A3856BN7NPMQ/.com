@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <title>Document</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade ajustada -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -25,9 +24,6 @@
       padding: 10px 20px;
       position: relative;
       overflow: hidden;
-      width: 100%;
-      max-width: 1200px; /* Limite máximo para telas maiores */
-      margin: 0 auto;
     }
 
     /* Fundo com imagem JPEG */
@@ -47,7 +43,6 @@
       position: relative;
       z-index: 10;
       max-width: 700px;
-      width: 100%; /* Ajuste para ser mais responsivo */
       padding: 40px;
       text-align: left;
       background: transparent;
@@ -65,41 +60,43 @@
       position: relative;
     }
 
+    /* Balão de pensamento ajustado */
     .thinking-bubble {
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.7); /* Balão mais escuro */
       padding: 15px;
-      font-size: 0.9rem;
-      color: #000;
+      font-size: 0.9rem; /* Tamanho reduzido */
+      color: #000; /* Cor do texto em preto */
       border-radius: 20px;
       position: fixed;
-      bottom: 10px;
-      right: 10px;
-      max-width: 150px;
+      bottom: 10px; /* Mover para o fundo da tela */
+      right: 10px; /* Colocar perto do lado direito */
+      max-width: 150px; /* Largura reduzida para um balão menor */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
+      text-align: center; /* Centraliza o texto no balão */
       line-height: 1.5;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); /* Adiciona o efeito de blur */
     }
 
     .thinking-bubble:after {
       content: '';
       position: absolute;
-      top: 50%;
-      right: 100%;
+      top: 50%; /* Ajuste para alinhar a seta verticalmente */
+      right: 100%; /* Mover a seta para a direita do balão */
       transform: translateY(-50%);
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-right: 15px solid rgba(0, 0, 0, 0.7);
+      border-right: 15px solid rgba(0, 0, 0, 0.7); /* Cor da seta combinando com o balão */
     }
 
+    /* Ajustando o botão para ter o mesmo fundo do balão */
     .learn-more {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.75rem;
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.7); /* Mesmo fundo do balão */
       border: none;
       border-radius: 20px;
       padding: 10px 20px;
@@ -107,14 +104,14 @@
       text-transform: uppercase;
       transition: background-color 0.3s, transform 0.3s ease;
       position: fixed;
-      right: 20px;
-      bottom: 50%;
+      right: 20px; /* Posição original no lado direito */
+      bottom: 50%; /* Voltar para a posição original (mais centralizado) */
       animation: pulse 2s infinite;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); /* Efeito de blur para combinar com o balão */
     }
 
     .learn-more:hover {
-      background-color: rgba(100, 255, 218, 0.7);
+      background-color: rgba(100, 255, 218, 0.7); /* Cor similar ao efeito hover */
       transform: scale(1.1) translateY(-50%) rotate(-90deg);
     }
 
@@ -192,7 +189,6 @@
         transform: scale(1) translateY(-50%) rotate(-90deg);
       }
     }
-
   </style>
 </head>
 <body>

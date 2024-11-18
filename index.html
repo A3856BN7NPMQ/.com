@@ -1,339 +1,256 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Document</title>
+  <title>Centralize</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Montserrat', sans-serif;
-      color: #1D1F21;
+      color: #000;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
       padding: 10px 20px;
       position: relative;
       overflow: hidden;
+      flex-direction: column;
+      background-color: #f9f9f9;
     }
 
-    /* Fundo com imagem JPEG */
     .background {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://raw.githubusercontent.com/Otabolsacul/.com/main/IMG_0637.webp') no-repeat center right fixed;
-      background-size: cover;
+      background-color: rgba(255, 255, 255, 0.9);
       z-index: -2;
-      filter: grayscale(100%);
     }
 
-    /* Quadro com a mesma imagem do fundo */
     .image-frame {
+      position: relative;
+      width: 60vw;
+      height: 60vh;
+      background: url('https://raw.githubusercontent.com/Otabolsacul/.com/main/IMG_0637.webp') no-repeat left center;
+      background-size: cover;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      border-radius: 30px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+    }
+
+    .instagram-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .click-text {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #000;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      text-align: center;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      width: 160px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #000;
+      text-align: center;
+      width: 100%;
+    }
+
+    footer p {
+      color: #000;
+    }
+
+    footer a {
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    footer a.lattes-link {
+      background: linear-gradient(to right, #0099cc, #00b7b2);
+      color: transparent;
+      background-clip: text;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: transform 0.3s ease;
+    }
+
+    footer a.lattes-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 183, 178, 0.8);
+    }
+
+    footer a.instagram-link {
+      background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+      color: transparent;
+      background-clip: text;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: transform 0.3s ease;
+    }
+
+    footer a.instagram-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    }
+
+    #aboutSection {
+      display: none;
+      width: 50vw;
+      height: 50vh;
+      background-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      margin: auto;
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 50vw;
-      height: 50vh;
-      background: url('https://raw.githubusercontent.com/Otabolsacul/.com/main/IMG_0637.webp') no-repeat left center;
-      background-size: cover;
       transform: translate(-50%, -50%);
-      border: 5px solid #fff;
-      z-index: 1;
-      backdrop-filter: blur(10px);
-      opacity: 0.7;
+      z-index: 9999;
+      padding: 20px;
       border-radius: 15px;
+      overflow-y: scroll; /* Barra de rolagem visível */
+      box-sizing: border-box;
+    }
+
+    #aboutSection p {
+      font-size: 1rem;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    .about-content {
       display: flex;
-      justify-content: flex-start;
-      align-items: flex-end;
-      padding: 10px;
-    }
-
-    .container {
-      position: relative;
-      z-index: 10;
-      max-width: 700px;
-      padding: 40px;
-      text-align: left;
-      background: transparent;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      color: #000;
-      margin-bottom: 20px;
-      text-align: left;
-      margin-left: 0;
-    }
-
-    .web-text-wrapper {
-      position: relative;
-    }
-
-    /* Balão de pensamento ajustado */
-    .thinking-bubble {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px;
-      font-size: 0.9rem;
-      color: #000;
-      border-radius: 20px;
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      max-width: 150px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
       text-align: center;
-      line-height: 1.5;
-      backdrop-filter: blur(10px);
-      width: auto;
-      max-width: 250px;
+      width: 100%;
     }
 
-    .thinking-bubble:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 100%;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right: 15px solid rgba(0, 0, 0, 0.7);
-    }
-
-    .learn-more {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.7);
+    #closeAbout {
+      font-size: 1rem;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
       border: none;
       border-radius: 20px;
       padding: 10px 20px;
       cursor: pointer;
-      text-transform: uppercase;
-      transition: background-color 0.3s, transform 0.3s ease;
-      position: absolute;
-      top: 30px;
-      left: 40%;
-      transform: translateX(-50%);
-      animation: pulse 2s infinite;
-      backdrop-filter: blur(10px);
+      margin-top: 20px;
     }
 
-    .learn-more:hover {
-      background-color: rgba(100, 255, 218, 0.7);
-      transform: scale(1.1) rotate(-90deg);
+    #closeAbout:hover {
+      background-color: rgba(255, 0, 0, 0.6);
     }
 
-    .about-section {
-      margin-top: 60px;
+    #lattesIframe {
       display: none;
-      background: rgba(200, 200, 200, 0.5);
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .about-section h3 {
-      font-size: 0.875rem;
-      color: #1D1F21;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-    }
-
-    .about-section p {
-      font-size: 1rem;
-      color: #1D1F21;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .back-button {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: #fff;
-      background-color: #000;
+      width: 80vw;
+      height: 80vh;
       border: none;
-      border-radius: 30px;
-      padding: 15px 40px;
-      cursor: pointer;
-      display: inline-block;
-      text-transform: uppercase;
-      margin-top: 40px;
-      transition: background-color 0.3s;
-      text-align: center;
-      margin: 0 auto;
-      display: block;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      border-radius: 15px; /* Cantos arredondados no iframe */
     }
 
-    .back-button:hover {
-      background-color: #64ffda;
-    }
-
-    .links {
-      display: flex;
-      justify-content: space-between;
-      margin-left: auto;
-    }
-
-    .links a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #000;
+    #closeIframe {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
       font-size: 1rem;
-      transition: color 0.3s;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      text-align: center;
+      cursor: pointer;
     }
 
-    .links a:hover {
-      color: #64ffda;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1) rotate(-90deg);
-      }
-      50% {
-        transform: scale(1.1) rotate(-90deg);
-      }
-      100% {
-        transform: scale(1) rotate(-90deg);
-      }
-    }
-
-    /* Animação de digitação */
-    @keyframes typing {
-      from {
-        width: 0;
-      }
-      to {
-        width: 100%;
-      }
-    }
-
-    .typing {
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        border-color: transparent;
-      }
-    }
-
-    /* Media Queries para Responsividade */
-
-    /* Ajustes para telas menores (como celulares) */
-    @media (max-width: 768px) {
-      .image-frame {
-        width: 80vw;
-        height: 40vh;
-      }
-
-      .learn-more {
-        font-size: 0.8rem;
-        padding: 8px 16px;
-        top: 40px;
-      }
-
-      .container {
-        padding: 20px;
-      }
-
-      h2 {
-        font-size: 1.2rem;
-      }
-
-      .about-section {
-        padding: 15px;
-      }
-
-      .thinking-bubble {
-        font-size: 0.8rem;
-        max-width: 120px;
-      }
-    }
-
-    /* Ajustes para telas muito pequenas (como celulares em modo retrato) */
-    @media (max-width: 480px) {
-      .image-frame {
-        width: 90vw;
-        height: 35vh;
-      }
-
-      .learn-more {
-        font-size: 0.7rem;
-        padding: 6px 12px;
-        top: 30px;
-      }
-
-      h2 {
-        font-size: 1rem;
-      }
-
-      .about-section {
-        padding: 10px;
-      }
-
-      .thinking-bubble {
-        font-size: 0.75rem;
-        max-width: 100px;
-      }
+    #closeIframe:hover {
+      background-color: rgba(255, 0, 0, 0.6);
     }
   </style>
 </head>
 <body>
-  <div class="background" id="background"></div>
-  <div class="image-frame" id="imageFrame">
-    <button class="learn-more" id="learnMoreBtn">Learn More</button>
-  </div>
-  <div class="container">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <h2>Applied <br> Mathematics</h2>
-    </div>
+  <div class="background"></div>
+  <div class="image-frame" onclick="openAboutSection()">
+    <a href="https://www.instagram.com/otabolsacul" target="_blank">
+      <div class="instagram-icon">
+        <i class="fab fa-instagram"></i>
+      </div>
+    </a>
+    <div class="click-text">Click on the image to learn more</div>
   </div>
 
-  <!-- Seção "About" -->
-  <div class="about-section" id="aboutSection">
-    <h3>About Me</h3>
+  <footer>
     <p>
-        Hi, I'm Lucas Lobato, a passionate student of Applied Mathematics. I enjoy solving complex problems and exploring innovative solutions in the field of mathematics. I'm also enthusiastic about technology and programming, which allow me to tackle challenges in new and exciting ways.
-      </p>
-      <button class="back-button" onclick="toggleAboutSection()">Back</button>
+      Visit my <a href="#" onclick="openIframe()" class="lattes-link">Lattes</a> or <a href="https://www.instagram.com/otabolsacul" target="_blank" class="instagram-link">Instagram</a> profile.
+    </p>
+  </footer>
+
+  <iframe id="lattesIframe" src="http://lattes.cnpq.br/0213877096339374"></iframe>
+  <button id="closeIframe" onclick="closeIframe()">Close</button>
+
+  <!-- Seção About -->
+  <div id="aboutSection">
+    <div class="about-content">
+      <p>Hi, I'm Lucas Lobato, passionate about Mathematics, Technology, and Photography. I love solving complex problems and programming to find innovative solutions.</p>
+      <button id="closeAbout" onclick="closeAboutSection()">Close</button>
     </div>
+  </div>
 
   <script>
-    // Função para alternar a exibição da seção 'About'
-    function toggleAboutSection() {
-      const aboutSection = document.getElementById('aboutSection');
-      const learnMoreBtn = document.getElementById('learnMoreBtn');
-
-      // Alterna a visibilidade da seção 'About'
-      if (aboutSection.style.display === 'none' || aboutSection.style.display === '') {
-        aboutSection.style.display = 'block';
-        learnMoreBtn.style.display = 'none';
-      } else {
-        aboutSection.style.display = 'none';
-        learnMoreBtn.style.display = 'block';
-      }
+    function openIframe() {
+      document.getElementById('lattesIframe').style.display = 'block';
+      document.getElementById('closeIframe').style.display = 'block';
     }
 
-    // Inicializa a exibição da seção 'About' como oculta
-    document.getElementById('aboutSection').style.display = 'none';
+    function closeIframe() {
+      document.getElementById('lattesIframe').style.display = 'none';
+      document.getElementById('closeIframe').style.display = 'none';
+    }
+
+    function openAboutSection() {
+      document.getElementById('aboutSection').style.display = 'block';
+      document.getElementById('closeAbout').style.display = 'inline-flex';
+    }
+
+    function closeAboutSection() {
+      document.getElementById('aboutSection').style.display = 'none';
+      document.getElementById('closeAbout').style.display = 'none';
+    }
   </script>
 </body>
 </html>

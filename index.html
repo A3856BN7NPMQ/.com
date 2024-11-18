@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troca Automática de Imagens</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
   <style>
-    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Montserrat', sans-serif;
       color: #1D1F21;
@@ -25,20 +24,32 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* Fundo com imagem JPEG */
     .background {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://github.com/otabolsacul/repository/blob/main/images/img_0637.webp?raw=true') no-repeat center center fixed;
+      background: url('https://raw.githubusercontent.com/Otabolsacul/.com/main/IMG_0637.webp') no-repeat center right fixed;
       background-size: cover;
       z-index: -2;
       filter: grayscale(100%);
     }
-
+    .image-frame {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50vw;
+      height: 50vh;
+      background: url('https://raw.githubusercontent.com/Otabolsacul/.com/main/IMG_0637.webp') no-repeat left center;
+      background-size: cover;
+      transform: translate(-50%, -50%);
+      border: 5px solid #fff;
+      z-index: 1;
+      backdrop-filter: blur(10px);
+      opacity: 0.7;
+      border-radius: 15px;
+    }
     .container {
       position: relative;
       z-index: 10;
@@ -47,7 +58,6 @@
       text-align: left;
       background: transparent;
     }
-
     h2 {
       font-size: 1.5rem;
       color: #000;
@@ -55,66 +65,56 @@
       text-align: left;
       margin-left: 0;
     }
-
-    .web-text-wrapper {
-      position: relative;
-    }
-
-    /* Balão de pensamento ajustado */
     .thinking-bubble {
-      background-color: rgba(0, 0, 0, 0.7); /* Balão mais escuro */
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 15px;
-      font-size: 0.9rem; /* Tamanho reduzido */
-      color: #000; /* Cor do texto em preto */
+      font-size: 0.9rem;
+      color: #000;
       border-radius: 20px;
       position: fixed;
-      bottom: 10px; /* Mover para o fundo da tela */
-      right: 10px; /* Colocar perto do lado direito */
-      max-width: 150px; /* Largura reduzida para um balão menor */
+      bottom: 10px;
+      right: 10px;
+      max-width: 150px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center; /* Centraliza o texto no balão */
+      text-align: center;
       line-height: 1.5;
-      backdrop-filter: blur(10px); /* Adiciona o efeito de blur */
+      backdrop-filter: blur(10px);
     }
-
     .thinking-bubble:after {
       content: '';
       position: absolute;
-      top: 50%; /* Ajuste para alinhar a seta verticalmente */
-      right: 100%; /* Mover a seta para a direita do balão */
+      top: 50%;
+      right: 100%;
       transform: translateY(-50%);
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-right: 15px solid rgba(0, 0, 0, 0.7); /* Cor da seta combinando com o balão */
+      border-right: 15px solid rgba(0, 0, 0, 0.7);
     }
-
-    /* Ajustando o botão para ter o mesmo fundo do balão */
     .learn-more {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.75rem;
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.7); /* Mesmo fundo do balão */
+      background-color: rgba(0, 0, 0, 0.7);
       border: none;
       border-radius: 20px;
       padding: 10px 20px;
       cursor: pointer;
       text-transform: uppercase;
       transition: background-color 0.3s, transform 0.3s ease;
-      position: fixed;
-      right: 20px; /* Posição original no lado direito */
-      bottom: 50%; /* Voltar para a posição original (mais centralizado) */
+      position: absolute;
+      top: 50px;
+      left: 60%;
+      transform: translateX(-50%);
       animation: pulse 2s infinite;
-      backdrop-filter: blur(10px); /* Efeito de blur para combinar com o balão */
+      backdrop-filter: blur(10px);
     }
-
     .learn-more:hover {
-      background-color: rgba(100, 255, 218, 0.7); /* Cor similar ao efeito hover */
-      transform: scale(1.1) translateY(-50%) rotate(-90deg);
+      background-color: rgba(100, 255, 218, 0.7);
+      transform: scale(1.1) rotate(-90deg);
     }
-
     .about-section {
       margin-top: 60px;
       display: none;
@@ -122,21 +122,18 @@
       padding: 20px;
       border-radius: 10px;
     }
-
     .about-section h3 {
       font-size: 0.875rem;
       color: #1D1F21;
       letter-spacing: 2px;
       margin-bottom: 15px;
     }
-
     .about-section p {
       font-size: 1rem;
       color: #1D1F21;
       line-height: 1.6;
       margin-bottom: 15px;
     }
-
     .back-button {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
@@ -155,17 +152,14 @@
       margin: 0 auto;
       display: block;
     }
-
     .back-button:hover {
       background-color: #64ffda;
     }
-
     .links {
       display: flex;
       justify-content: space-between;
       margin-left: auto;
     }
-
     .links a {
       margin-left: 20px;
       text-decoration: none;
@@ -173,63 +167,68 @@
       font-size: 1rem;
       transition: color 0.3s;
     }
-
     .links a:hover {
       color: #64ffda;
     }
-
     @keyframes pulse {
       0% {
-        transform: scale(1) translateY(-50%) rotate(-90deg);
+        transform: scale(1) rotate(-90deg);
       }
       50% {
-        transform: scale(1.1) translateY(-50%) rotate(-90deg);
+        transform: scale(1.1) rotate(-90deg);
       }
       100% {
-        transform: scale(1) translateY(-50%) rotate(-90deg);
+        transform: scale(1) rotate(-90deg);
       }
     }
   </style>
 </head>
 <body>
-
   <div class="background" id="background"></div>
-
+  <div class="image-frame" id="imageFrame">
+    <button class="learn-more" id="learnMoreBtn">About</button>
+  </div> <!-- Quadro com a imagem -->
   <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center;">
       <h2>Applied <br> Mathematics</h2>
     </div>
-
     <div class="web-text-wrapper">
       <div class="thinking-bubble">
         <a href="https://www.instagram.com" target="_blank" style="color: #fff;">Instagram</a><br>
         <a href="http://lattes.cnpq.br" target="_blank" style="color: #fff;">Lattes</a>
       </div>
-      <button class="learn-more" id="learnMoreBtn">Learn More</button>
     </div>
-
     <div class="about-section" id="aboutSection">
       <h3>ABOUT</h3>
       <p>I'm a freshman in Applied Computational Mathematics at UFF. I'm passionate about photography and always seeking new perspectives through the lens.</p>
-      <p>Currently, I'm diving deep into the world of computational mathematics, where I blend creativity and logic to solve complex problems.</p>
-
-      <button class="back-button" id="backButton">Back</button>
     </div>
   </div>
 
+  <!-- Aqui você pode adicionar manualmente as URLs das imagens do Juicer -->
   <script>
-    const learnMoreBtn = document.getElementById('learnMoreBtn');
-    const aboutSection = document.getElementById('aboutSection');
-    const backButton = document.getElementById('backButton');
+    const imageUrls = [
+      'https://example.com/image1.jpg',
+      'https://example.com/image2.jpg',
+      'https://example.com/image3.jpg',
+      'https://example.com/image4.jpg'
+    ];
 
-    learnMoreBtn.addEventListener('click', function() {
-      aboutSection.style.display = 'block';
-      learnMoreBtn.style.display = 'none'; 
-    });
+    let currentImageIndex = 0;
 
-    backButton.addEventListener('click', function() {
-      aboutSection.style.display = 'none';
-    });
+    // Função para trocar a imagem no quadro
+    function updateImageFrame() {
+      const imageFrame = document.getElementById('imageFrame');
+      imageFrame.style.backgroundImage = `url(${imageUrls[currentImageIndex]})`;
+
+      // Atualiza o índice para a próxima imagem
+      currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+    }
+
+    // Troca a imagem a cada 2 segundos
+    setInterval(updateImageFrame, 2000);
+
+    // Inicializa a primeira imagem
+    updateImageFrame();
   </script>
 </body>
 </html>

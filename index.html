@@ -23,6 +23,7 @@
       position: relative;
       overflow: hidden;
     }
+
     /* Fundo com imagem JPEG */
     .background {
       position: absolute;
@@ -35,26 +36,28 @@
       z-index: -2;
       filter: grayscale(100%);
     }
+
     /* Quadro com a mesma imagem do fundo */
     .image-frame {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 50vw;  /* Ajuste o tamanho conforme necessário */
-      height: 50vh; /* Ajuste o tamanho conforme necessário */
+      width: 50vw;
+      height: 50vh;
       background: url('https://raw.githubusercontent.com/Otabolsacul/.com/main/IMG_0637.webp') no-repeat left center;
       background-size: cover;
       transform: translate(-50%, -50%);
-      border: 5px solid #fff; /* Para destacar o quadro */
+      border: 5px solid #fff;
       z-index: 1;
-      backdrop-filter: blur(10px); /* Adiciona o efeito de blur */
-      opacity: 0.7; /* Torna o fundo translúcido */
-      border-radius: 15px; /* Torna o quadro arredondado */
+      backdrop-filter: blur(10px);
+      opacity: 0.7;
+      border-radius: 15px;
       display: flex;
-      justify-content: flex-start; /* Alinha o conteúdo no início (topo) */
-      align-items: flex-end; /* Alinha o conteúdo à direita */
-      padding: 10px; /* Adiciona um espaçamento interno */
+      justify-content: flex-start;
+      align-items: flex-end;
+      padding: 10px;
     }
+
     .container {
       position: relative;
       z-index: 10;
@@ -63,6 +66,7 @@
       text-align: left;
       background: transparent;
     }
+
     h2 {
       font-size: 1.5rem;
       color: #000;
@@ -70,63 +74,68 @@
       text-align: left;
       margin-left: 0;
     }
+
     .web-text-wrapper {
       position: relative;
     }
+
     /* Balão de pensamento ajustado */
     .thinking-bubble {
-      background-color: rgba(0, 0, 0, 0.7); /* Balão mais escuro */
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 15px;
-      font-size: 0.9rem; /* Tamanho reduzido */
-      color: #000; /* Cor do texto em preto */
+      font-size: 0.9rem;
+      color: #000;
       border-radius: 20px;
       position: fixed;
-      bottom: 10px; /* Mover para o fundo da tela */
-      right: 10px; /* Colocar perto do lado direito */
-      max-width: 150px; /* Largura reduzida para um balão menor */
+      bottom: 10px;
+      right: 10px;
+      max-width: 150px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center; /* Centraliza o texto no balão */
+      text-align: center;
       line-height: 1.5;
-      backdrop-filter: blur(10px); /* Adiciona o efeito de blur */
+      backdrop-filter: blur(10px);
       width: auto;
       max-width: 250px;
     }
+
     .thinking-bubble:after {
       content: '';
       position: absolute;
-      top: 50%; /* Ajuste para alinhar a seta verticalmente */
-      right: 100%; /* Mover a seta para a direita do balão */
+      top: 50%;
+      right: 100%;
       transform: translateY(-50%);
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-right: 15px solid rgba(0, 0, 0, 0.7); /* Cor da seta combinando com o balão */
+      border-right: 15px solid rgba(0, 0, 0, 0.7);
     }
-    /* Ajustando o botão para ter o mesmo fundo do balão */
+
     .learn-more {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.75rem;
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.7); /* Mesmo fundo do balão */
+      background-color: rgba(0, 0, 0, 0.7);
       border: none;
       border-radius: 20px;
       padding: 10px 20px;
       cursor: pointer;
       text-transform: uppercase;
       transition: background-color 0.3s, transform 0.3s ease;
-      position: absolute; /* Define posição absoluta */
-      top: 50px; /* Coloca o botão na parte inferior */
-      left: 60%; /* Centraliza o botão horizontalmente */
-      transform: translateX(-50%); /* Ajuste para centralizar corretamente */
+      position: absolute;
+      top: 50px;
+      left: 60%;
+      transform: translateX(-50%);
       animation: pulse 2s infinite;
-      backdrop-filter: blur(10px); /* Efeito de blur para combinar com o balão */
+      backdrop-filter: blur(10px);
     }
+
     .learn-more:hover {
-      background-color: rgba(100, 255, 218, 0.7); /* Cor similar ao efeito hover */
+      background-color: rgba(100, 255, 218, 0.7);
       transform: scale(1.1) rotate(-90deg);
     }
+
     .about-section {
       margin-top: 60px;
       display: none;
@@ -134,18 +143,21 @@
       padding: 20px;
       border-radius: 10px;
     }
+
     .about-section h3 {
       font-size: 0.875rem;
       color: #1D1F21;
       letter-spacing: 2px;
       margin-bottom: 15px;
     }
+
     .about-section p {
       font-size: 1rem;
       color: #1D1F21;
       line-height: 1.6;
       margin-bottom: 15px;
     }
+
     .back-button {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
@@ -164,14 +176,17 @@
       margin: 0 auto;
       display: block;
     }
+
     .back-button:hover {
       background-color: #64ffda;
     }
+
     .links {
       display: flex;
       justify-content: space-between;
       margin-left: auto;
     }
+
     .links a {
       margin-left: 20px;
       text-decoration: none;
@@ -179,9 +194,11 @@
       font-size: 1rem;
       transition: color 0.3s;
     }
+
     .links a:hover {
       color: #64ffda;
     }
+
     @keyframes pulse {
       0% {
         transform: scale(1) rotate(-90deg);
@@ -193,6 +210,7 @@
         transform: scale(1) rotate(-90deg);
       }
     }
+
     /* Animação de digitação */
     @keyframes typing {
       from {
@@ -202,6 +220,7 @@
         width: 100%;
       }
     }
+
     .typing {
       display: inline-block;
       white-space: nowrap;
@@ -209,9 +228,70 @@
       width: 0;
       animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
     }
+
     @keyframes blink {
       50% {
         border-color: transparent;
+      }
+    }
+
+    /* Media Queries para Responsividade */
+
+    /* Ajustes para telas menores (como celulares) */
+    @media (max-width: 768px) {
+      .image-frame {
+        width: 80vw;
+        height: 40vh;
+      }
+
+      .learn-more {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+        top: 40px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .about-section {
+        padding: 15px;
+      }
+
+      .thinking-bubble {
+        font-size: 0.8rem;
+        max-width: 120px;
+      }
+    }
+
+    /* Ajustes para telas muito pequenas (como celulares em modo retrato) */
+    @media (max-width: 480px) {
+      .image-frame {
+        width: 90vw;
+        height: 35vh;
+      }
+
+      .learn-more {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+        top: 30px;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      .about-section {
+        padding: 10px;
+      }
+
+      .thinking-bubble {
+        font-size: 0.75rem;
+        max-width: 100px;
       }
     }
   </style>
@@ -220,31 +300,15 @@
   <div class="background" id="background"></div>
   <div class="image-frame" id="imageFrame">
     <button class="learn-more" id="learnMoreBtn">Learn More</button>
-  </div> <!-- Quadro com a imagem -->
+  </div>
   <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center;">
-      <h2 class="typing">Applied <br> Mathematics</h2>
-    </div>
-    <div class="about-section" id="aboutSection">
-      <h3>About Me</h3>
-      <p>Passionate about mathematics and programming. I am a student of Applied Computational Mathematics at UFF, and I love to solve problems using AI.</p>
-      <button class="back-button" id="backButton">Back</button>
+      <h2>Applied <br> Mathematics</h2>
     </div>
   </div>
-  <script>
-    const learnMoreBtn = document.getElementById('learnMoreBtn');
-    const aboutSection = document.getElementById('aboutSection');
-    const backButton = document.getElementById('backButton');
 
-    // Quando o botão "Learn More" for clicado, exibe a seção "About"
-    learnMoreBtn.addEventListener('click', () => {
-      aboutSection.style.display = 'block';
-    });
-
-    // Quando o botão "Back" for clicado, oculta a seção "About"
-    backButton.addEventListener('click', () => {
-      aboutSection.style.display = 'none';
-    });
-  </script>
-</body>
-</html>
+  <!-- Seção "About" -->
+  <div class="about-section" id="aboutSection">
+    <h3>About Me</h3>
+    <p>
+      Hi, I'm Lucas Lobato, a passionate student of

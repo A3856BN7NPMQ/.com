@@ -219,7 +219,7 @@
 <body>
   <div class="background" id="background"></div>
   <div class="image-frame" id="imageFrame">
-    <button class="learn-more" id="learnMoreBtn">About</button>
+    <button class="learn-more" id="learnMoreBtn">Learn More</button>
   </div> <!-- Quadro com a imagem -->
   <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -233,4 +233,18 @@
   </div>
   <script>
     const learnMoreBtn = document.getElementById('learnMoreBtn');
-    const aboutSection = document.getElementById('about
+    const aboutSection = document.getElementById('aboutSection');
+    const backButton = document.getElementById('backButton');
+
+    // Quando o botão "Learn More" for clicado, exibe a seção "About"
+    learnMoreBtn.addEventListener('click', () => {
+      aboutSection.style.display = 'block';
+    });
+
+    // Quando o botão "Back" for clicado, oculta a seção "About"
+    backButton.addEventListener('click', () => {
+      aboutSection.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

@@ -105,9 +105,9 @@
       text-transform: uppercase;
       transition: background-color 0.3s, transform 0.3s ease;
       position: absolute;
-      top: 50px;
-      left: 60%;
-      transform: translateX(-50%);
+      top: 50px; /* Posição fixada na parte superior */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Mantém a centralização do botão */
       animation: pulse 2s infinite;
       backdrop-filter: blur(10px);
     }
@@ -121,14 +121,14 @@
       background: rgba(200, 200, 200, 0.5);
       padding: 20px;
       border-radius: 10px;
-      position: absolute; /* Ajustado para evitar o deslocamento */
-      top: 120px; /* Ajuste a posição vertical conforme necessário */
-      left: 50%;
+      position: absolute; /* Ajuste para evitar deslocamento */
+      top: 120px; /* Ajuste a posição vertical */
+      left: 50%; /* Centraliza horizontalmente */
       transform: translateX(-50%);
       width: 80%; /* Ajuste o tamanho conforme necessário */
     }
     .about-section.show {
-      display: block; /* Torna a seção visível quando a classe "show" é adicionada */
+      display: block; /* Torna a seção visível */
     }
     .about-section h3 {
       font-size: 0.875rem;
@@ -212,7 +212,6 @@
     </div>
   </div>
 
-  <!-- Aqui você pode adicionar manualmente as URLs das imagens do Juicer -->
   <script>
     const imageUrls = [
       'https://example.com/image1.jpg',
@@ -223,20 +222,21 @@
 
     let currentImageIndex = 0;
 
-    // Função para trocar a imagem no quadro
     function updateImageFrame() {
       const imageFrame = document.getElementById('imageFrame');
       imageFrame.style.backgroundImage = `url(${imageUrls[currentImageIndex]})`;
-
-      // Atualiza o índice para a próxima imagem
       currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
     }
 
-    // Troca a imagem a cada 2 segundos
     setInterval(updateImageFrame, 2000);
-
-    // Inicializa a primeira imagem
     updateImageFrame();
 
     // Mostrar a seção "ABOUT" ao clicar no botão "Learn More"
-    document.getElementById("learnMoreBtn
+    document.getElementById("learnMoreBtn").addEventListener("click", function() {
+      const aboutSection = document.getElementById("aboutSection");
+      // Alternar entre mostrar e esconder a seção "ABOUT"
+      aboutSection.classList.toggle("show");
+    });
+  </script>
+</body>
+</html>

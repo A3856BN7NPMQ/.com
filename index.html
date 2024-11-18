@@ -311,4 +311,29 @@
   <div class="about-section" id="aboutSection">
     <h3>About Me</h3>
     <p>
-      Hi, I'm Lucas Lobato, a passionate student of
+        Hi, I'm Lucas Lobato, a passionate student of Applied Mathematics. I enjoy solving complex problems and exploring innovative solutions in the field of mathematics. I'm also enthusiastic about technology and programming, which allow me to tackle challenges in new and exciting ways.
+      </p>
+      <button class="back-button" onclick="toggleAboutSection()">Back</button>
+    </div>
+
+  <script>
+    // Função para alternar a exibição da seção 'About'
+    function toggleAboutSection() {
+      const aboutSection = document.getElementById('aboutSection');
+      const learnMoreBtn = document.getElementById('learnMoreBtn');
+
+      // Alterna a visibilidade da seção 'About'
+      if (aboutSection.style.display === 'none' || aboutSection.style.display === '') {
+        aboutSection.style.display = 'block';
+        learnMoreBtn.style.display = 'none';
+      } else {
+        aboutSection.style.display = 'none';
+        learnMoreBtn.style.display = 'block';
+      }
+    }
+
+    // Inicializa a exibição da seção 'About' como oculta
+    document.getElementById('aboutSection').style.display = 'none';
+  </script>
+</body>
+</html>

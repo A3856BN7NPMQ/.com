@@ -120,6 +120,20 @@
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     }
 
+    footer a.github-link {
+      background: linear-gradient(to right, #171515, #00b7b2);
+      color: transparent;
+      background-clip: text;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: transform 0.3s ease;
+    }
+
+    footer a.github-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
     #aboutSection {
       display: none;
       width: 50vw;
@@ -134,7 +148,7 @@
       z-index: 9999;
       padding: 20px;
       border-radius: 15px;
-      overflow-y: scroll; /* Barra de rolagem visível */
+      overflow-y: scroll;
       box-sizing: border-box;
     }
 
@@ -180,7 +194,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 9999;
-      border-radius: 15px; /* Cantos arredondados no iframe */
+      border-radius: 15px;
     }
 
     #closeIframe {
@@ -216,7 +230,7 @@
 
   <footer>
     <p>
-      Visit my <a href="#" onclick="openIframe()" class="lattes-link">Lattes</a> or <a href="https://www.instagram.com/otabolsacul" target="_blank" class="instagram-link">Instagram</a> profile.
+      Visit my <a href="#" onclick="openIframe()" class="lattes-link">Lattes</a> or <a href="https://www.instagram.com/otabolsacul" target="_blank" class="instagram-link">Instagram</a> profile, or check out my <a href="https://github.com/Otabolsacul" target="_blank" class="github-link"><i class="fab fa-github"></i> GitHub</a>!
     </p>
   </footer>
 
@@ -237,7 +251,8 @@
       document.getElementById('closeIframe').style.display = 'block';
     }
 
-    function closeIframe() {
+      document.get
+      function closeIframe() {
       document.getElementById('lattesIframe').style.display = 'none';
       document.getElementById('closeIframe').style.display = 'none';
     }

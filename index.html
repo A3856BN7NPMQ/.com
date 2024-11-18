@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Troca Automática de Imagens</title>
+  <title>Document</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
+    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
@@ -24,6 +23,7 @@
       position: relative;
       overflow: hidden;
     }
+    /* Fundo com imagem JPEG */
     .background {
       position: absolute;
       top: 0;
@@ -35,20 +35,25 @@
       z-index: -2;
       filter: grayscale(100%);
     }
+    /* Quadro com a mesma imagem do fundo */
     .image-frame {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 50vw;
-      height: 50vh;
+      width: 50vw;  /* Ajuste o tamanho conforme necessário */
+      height: 50vh; /* Ajuste o tamanho conforme necessário */
       background: url('https://raw.githubusercontent.com/Otabolsacul/.com/main/IMG_0637.webp') no-repeat left center;
       background-size: cover;
       transform: translate(-50%, -50%);
-      border: 5px solid #fff;
+      border: 5px solid #fff; /* Para destacar o quadro */
       z-index: 1;
-      backdrop-filter: blur(10px);
-      opacity: 0.7;
-      border-radius: 15px;
+      backdrop-filter: blur(10px); /* Adiciona o efeito de blur */
+      opacity: 0.7; /* Torna o fundo translúcido */
+      border-radius: 15px; /* Torna o quadro arredondado */
+      display: flex;
+      justify-content: flex-start; /* Alinha o conteúdo no início (topo) */
+      align-items: flex-end; /* Alinha o conteúdo à direita */
+      padding: 10px; /* Adiciona um espaçamento interno */
     }
     .container {
       position: relative;
@@ -65,54 +70,61 @@
       text-align: left;
       margin-left: 0;
     }
+    .web-text-wrapper {
+      position: relative;
+    }
+    /* Balão de pensamento ajustado */
     .thinking-bubble {
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.7); /* Balão mais escuro */
       padding: 15px;
-      font-size: 0.9rem;
-      color: #000;
+      font-size: 0.9rem; /* Tamanho reduzido */
+      color: #000; /* Cor do texto em preto */
       border-radius: 20px;
       position: fixed;
-      bottom: 10px;
-      right: 10px;
-      max-width: 150px;
+      bottom: 10px; /* Mover para o fundo da tela */
+      right: 10px; /* Colocar perto do lado direito */
+      max-width: 150px; /* Largura reduzida para um balão menor */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      text-align: center;
+      text-align: center; /* Centraliza o texto no balão */
       line-height: 1.5;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); /* Adiciona o efeito de blur */
+      width: auto;
+      max-width: 250px;
     }
     .thinking-bubble:after {
       content: '';
       position: absolute;
-      top: 50%;
-      right: 100%;
+      top: 50%; /* Ajuste para alinhar a seta verticalmente */
+      right: 100%; /* Mover a seta para a direita do balão */
       transform: translateY(-50%);
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
-      border-right: 15px solid rgba(0, 0, 0, 0.7);
+      border-right: 15px solid rgba(0, 0, 0, 0.7); /* Cor da seta combinando com o balão */
     }
+    /* Ajustando o botão para ter o mesmo fundo do balão */
     .learn-more {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 0.75rem;
       color: #fff;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.7); /* Mesmo fundo do balão */
       border: none;
       border-radius: 20px;
       padding: 10px 20px;
       cursor: pointer;
       text-transform: uppercase;
       transition: background-color 0.3s, transform 0.3s ease;
-      position: absolute;
-      top: 50px; /* Posição fixada na parte superior */
-      left: 50%; /* Centraliza horizontalmente */
-      transform: translateX(-50%); /* Mantém a centralização do botão */
+      position: absolute; /* Define posição absoluta */
+      top: 50px; /* Coloca o botão na parte inferior */
+      left: 60%; /* Centraliza o botão horizontalmente */
+      transform: translateX(-50%); /* Ajuste para centralizar corretamente */
       animation: pulse 2s infinite;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); /* Efeito de blur para combinar com o balão */
     }
     .learn-more:hover {
-      background-color: rgba(100, 255, 218, 0.7);
+      background-color: rgba(100, 255, 218, 0.7); /* Cor similar ao efeito hover */
       transform: scale(1.1) rotate(-90deg);
     }
     .about-section {
@@ -121,14 +133,6 @@
       background: rgba(200, 200, 200, 0.5);
       padding: 20px;
       border-radius: 10px;
-      position: absolute; /* Ajuste para evitar deslocamento */
-      top: 120px; /* Ajuste a posição vertical */
-      left: 50%; /* Centraliza horizontalmente */
-      transform: translateX(-50%);
-      width: 80%; /* Ajuste o tamanho conforme necessário */
-    }
-    .about-section.show {
-      display: block; /* Torna a seção visível */
     }
     .about-section h3 {
       font-size: 0.875rem;
@@ -189,6 +193,27 @@
         transform: scale(1) rotate(-90deg);
       }
     }
+    /* Animação de digitação */
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    .typing {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+    }
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
   </style>
 </head>
 <body>
@@ -198,45 +223,8 @@
   </div> <!-- Quadro com a imagem -->
   <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center;">
-      <h2>Applied <br> Mathematics</h2>
-    </div>
-    <div class="web-text-wrapper">
-      <div class="thinking-bubble">
-        <a href="https://www.instagram.com" target="_blank" style="color: #fff;">Instagram</a><br>
-        <a href="http://lattes.cnpq.br" target="_blank" style="color: #fff;">Lattes</a>
-      </div>
-    </div>
-    <div class="about-section" id="aboutSection">
-      <h3>ABOUT</h3>
-      <p>I'm a freshman in Applied Computational Mathematics at UFF. I'm passionate about photography and always seeking new perspectives through the lens.</p>
-    </div>
+      <h2>Applied <br> Mathematics<\</h2>
+     </div>
   </div>
-
-  <script>
-    const imageUrls = [
-      'https://example.com/image1.jpg',
-      'https://example.com/image2.jpg',
-      'https://example.com/image3.jpg',
-      'https://example.com/image4.jpg'
-    ];
-
-    let currentImageIndex = 0;
-
-    function updateImageFrame() {
-      const imageFrame = document.getElementById('imageFrame');
-      imageFrame.style.backgroundImage = `url(${imageUrls[currentImageIndex]})`;
-      currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
-    }
-
-    setInterval(updateImageFrame, 2000);
-    updateImageFrame();
-
-    // Mostrar a seção "ABOUT" ao clicar no botão "Learn More"
-    document.getElementById("learnMoreBtn").addEventListener("click", function() {
-      const aboutSection = document.getElementById("aboutSection");
-      // Alternar entre mostrar e esconder a seção "ABOUT"
-      aboutSection.classList.toggle("show");
-    });
-  </script>
 </body>
 </html>

@@ -73,26 +73,27 @@
       width: 160px;
     }
 
-    footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.9rem;
-      color: #000;
-      text-align: center;
+    .top-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
+      position: absolute;
+      top: 20px;
+      z-index: 10;
     }
 
-    footer p {
-      color: #000;
+    .top-links p {
+      margin-right: 15px;
     }
 
-    footer a {
+    .top-links a {
       text-decoration: none;
       font-weight: bold;
       transition: transform 0.3s ease;
     }
 
-    footer a.lattes-link {
+    .top-links a.lattes-link {
       background: linear-gradient(to right, #0099cc, #00b7b2);
       color: transparent;
       background-clip: text;
@@ -101,12 +102,12 @@
       transition: transform 0.3s ease;
     }
 
-    footer a.lattes-link:hover {
+    .top-links a.lattes-link:hover {
       transform: scale(1.1);
       box-shadow: 0 0 20px rgba(0, 183, 178, 0.8);
     }
 
-    footer a.instagram-link {
+    .top-links a.instagram-link {
       background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
       color: transparent;
       background-clip: text;
@@ -115,23 +116,9 @@
       transition: transform 0.3s ease;
     }
 
-    footer a.instagram-link:hover {
+    .top-links a.instagram-link:hover {
       transform: scale(1.1);
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-    }
-
-    footer a.github-link {
-      background: linear-gradient(to right, #171515, #00b7b2);
-      color: transparent;
-      background-clip: text;
-      font-weight: bold;
-      padding: 5px 10px;
-      transition: transform 0.3s ease;
-    }
-
-    footer a.github-link:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
     #aboutSection {
@@ -148,7 +135,7 @@
       z-index: 9999;
       padding: 20px;
       border-radius: 15px;
-      overflow-y: scroll;
+      overflow-y: scroll; /* Barra de rolagem visível */
       box-sizing: border-box;
     }
 
@@ -194,7 +181,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 9999;
-      border-radius: 15px;
+      border-radius: 15px; /* Cantos arredondados no iframe */
     }
 
     #closeIframe {
@@ -219,6 +206,17 @@
 </head>
 <body>
   <div class="background"></div>
+
+  <!-- Seção de links no topo -->
+  <div class="top-links">
+    <p>Visit my:</p>
+    <a href="#" onclick="openIframe()" class="lattes-link">Lattes</a>
+    <a href="https://www.instagram.com/otabolsacul" target="_blank" class="instagram-link">Instagram</a>
+    <a href="https://github.com/Otabolsacul" target="_blank" class="github-link">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
+
   <div class="image-frame" onclick="openAboutSection()">
     <a href="https://www.instagram.com/otabolsacul" target="_blank">
       <div class="instagram-icon">
@@ -227,12 +225,6 @@
     </a>
     <div class="click-text">Click on the image to learn more</div>
   </div>
-
-  <footer>
-    <p>
-      Visit my <a href="#" onclick="openIframe()" class="lattes-link">Lattes</a> or <a href="https://www.instagram.com/otabolsacul" target="_blank" class="instagram-link">Instagram</a> profile, or check out my <a href="https://github.com/Otabolsacul" target="_blank" class="github-link"><i class="fab fa-github"></i> GitHub</a>!
-    </p>
-  </footer>
 
   <iframe id="lattesIframe" src="http://lattes.cnpq.br/0213877096339374"></iframe>
   <button id="closeIframe" onclick="closeIframe()">Close</button>
@@ -251,8 +243,7 @@
       document.getElementById('closeIframe').style.display = 'block';
     }
 
-      document.get
-      function closeIframe() {
+    function closeIframe() {
       document.getElementById('lattesIframe').style.display = 'none';
       document.getElementById('closeIframe').style.display = 'none';
     }
